@@ -1,16 +1,19 @@
 import ParallaxScrollView from "@/components/ParallaxScrollView";
 import { ThemedText } from "@/components/ThemedText";
 import { ThemedView } from "@/components/ThemedView";
-import { Image, StyleSheet } from "react-native";
+import { Image, StyleSheet, View } from "react-native";
 
 export default function HomeScreen() {
   return (
     <ParallaxScrollView
-      headerBackgroundColor={{ light: "A1CEDC", dark: "1D3D47" }}
+      headerBackgroundColor={{ light: "#EEE6D6", dark: "#EEE6D6" }}
       headerImage={
-        <Image
-        source={require("@/assets/images/civilian-entrance.jpg")}
-        style={styles.civilianLogo} />
+        <View style={styles.headerContainer}>
+          <Image
+            source={require("@/assets/images/civilian-badge.png")}
+            style={styles.civilianLogo}
+          />
+        </View>
       }
     >
       <ThemedView style={styles.default}>
@@ -24,16 +27,25 @@ export default function HomeScreen() {
 }
 
 const styles = StyleSheet.create({
+  headerContainer: {
+    height: 135,
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  civilianLogo: {
+    height: 70,
+    width: "auto",
+  },
   titleContainer: {
     flexDirection: "row",
-    justifyContent: 'center',
+    justifyContent: "center",
     alignItems: "center",
     gap: 8,
     marginTop: 0,
   },
   default: {
     flexDirection: "row",
-    justifyContent: 'center',
+    justifyContent: "center",
     alignItems: "center",
     gap: 8,
     marginBottom: 0,
@@ -41,12 +53,5 @@ const styles = StyleSheet.create({
   stepContainer: {
     gap: 8,
     marginBottom: 8,
-  },
-  civilianLogo: {
-    height: 250,
-    width: '100%',
-    bottom: 0,
-    left: 0,
-    position: 'absolute',
   },
 });
