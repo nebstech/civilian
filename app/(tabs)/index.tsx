@@ -13,8 +13,11 @@ export default function HomeScreen() {
         style={styles.civilianLogo} />
       }
     >
+      <ThemedView style={styles.default}>
+        <ThemedText type="default">NOW PRESENTING</ThemedText>
+      </ThemedView>
       <ThemedView style={styles.titleContainer}>
-        <ThemedText type="title">Welcome to Civilian NYC</ThemedText>
+        <ThemedText type="title">A Stay With New York Soul</ThemedText>
       </ThemedView>
     </ParallaxScrollView>
   );
@@ -23,8 +26,17 @@ export default function HomeScreen() {
 const styles = StyleSheet.create({
   titleContainer: {
     flexDirection: "row",
+    justifyContent: 'center',
     alignItems: "center",
     gap: 8,
+    marginTop: 0,
+  },
+  default: {
+    flexDirection: "row",
+    justifyContent: 'center',
+    alignItems: "center",
+    gap: 8,
+    marginBottom: 0,
   },
   stepContainer: {
     gap: 8,

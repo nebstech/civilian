@@ -33,7 +33,7 @@ export default function TabLayout() {
       <Tabs.Screen
         name="booking"
         options={{
-          title: "Book Now",
+          title: "Booking",
           tabBarIcon: ({ color, focused }) => (
             <TabBarIcon name={focused ? "book" : "book"} color={color} />
           ),
