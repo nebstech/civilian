@@ -1,15 +1,23 @@
-import { useColorScheme } from "@/hooks/useColorScheme.web";
 import { Tabs } from "expo-router";
 import { TabBarIcon } from "@/components/navigation/TabBarIcon";
 
-export default function TabLayout() {
-  const colorScheme = useColorScheme() as "light" | "dark";
 
+export default function TabLayout() {
   return (
     <Tabs
       screenOptions={{
-        tabBarActiveTintColor: "orange",
+        tabBarActiveTintColor: "#FFA001",
         headerShown: false,
+        tabBarStyle: {
+          borderWidth: 0,
+          shadowColor: "#000",
+          shadowOffset: { width: 0, height: 2 },
+          shadowOpacity: 0.1,
+          shadowRadius: 4,
+          elevation: 2,
+          height: 84,
+          borderTopColor: "#232533",
+        },
       }}
     >
       <Tabs.Screen
