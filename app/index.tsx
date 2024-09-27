@@ -1,3 +1,4 @@
+import 'react-native-url-polyfill/auto';
 import React from "react";
 import { View, Text, ScrollView, Image } from "react-native";
 import { Redirect, router } from "expo-router";
