@@ -8,5 +8,6 @@ import queen from "../assets/images/029_CozyQueenRoomRed.jpg"
 import master from "../assets/images/civilian-master.png"
 import cover from "../assets/images/civilian_hotel_cover.jpeg"
 import lowResKing from "../assets/images/029_CozyQueenRoomRed-min.jpg"
+import logo2 from "../assets/images/IMG_5786-removebg-preview.png"
 
-export default { badge, entrance, habitacion, logo, exterior, king, queen, master, cover, lowResKing };
+export default { badge, entrance, habitacion, logo, exterior, king, queen, master, cover, lowResKing, logo2 };
