@@ -21,7 +21,7 @@ const CustomButton: React.FC<CustomButtonProps> = ({
     <TouchableOpacity
       onPress={handlePress}
       activeOpacity={0.7}
-      className={twMerge(`bg-secondary rounded-m min-h-[62px] justify-center items-center ${containerStyles} ${
+      className={twMerge(`bg-accent rounded-m min-h-[62px] justify-center items-center ${containerStyles} ${
         isLoading ? "opacity-50" : ""
       }`)}
       disabled={isLoading}

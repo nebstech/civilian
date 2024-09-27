@@ -1,4 +1,4 @@
-import { View, Text, TextInput, TouchableOpacity, Image } from "react-native";
+import { View, TextInput, TouchableOpacity, Image } from "react-native";
 import React, { useState } from "react";
 import { KeyboardTypeOptions } from "react-native";
 
@@ -26,11 +26,11 @@ const FormField: React.FC<FormFieldProps> = ({
 
   return (
     <View className={`space-y-2 ${otherStyles}`}>
-      <View className="border-2 border-black-200 w-full h-14 px-4 bg-zinc-100 rounded-lg flex flex-row items-center">
+      <View className="border-2 border-gray-100 w-full h-14 px-4 bg-primary-200 rounded-lg flex flex-row items-center shadow-sm">
         <TextInput 
           className="flex-1 text-zinc-900 font-psemibold text-base"
           value={value}
-          placeholder={title}
+          placeholder={placeholder || title} // Use placeholder prop if provided
           placeholderTextColor="#7B7B8B"
           onChangeText={handleChangeText}
           secureTextEntry={title === 'Password' && !showPassword}

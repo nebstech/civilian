@@ -1,29 +1,49 @@
-import { View, ScrollView, Image, Text } from "react-native";
+import { View, ScrollView, Image, Text, Alert } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { useState } from "react";
-import { Link } from "expo-router";
+import { Link, useRouter } from "expo-router";
 
 import Images from "@/constants/Images";
 import FormFIeld from "@/components/FormFIeld";
 import CustomButton from "@/components/CustomButton";
 
-export default function SignIn() {
-  const submit = () => {
-    // Handle submission logic here
-  };
+import { SignIn as AppSignIn } from "@/lib/appwrite"; 
 
+export default function SignIn() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [form, setForm] = useState({
     email: '',
     password: '',
   });
+  const router = useRouter(); 
+
+  const submit = async () => {
+    if (!form.email || !form.password) {
+      Alert.alert('Error', 'Please fill in all the fields');
+      return; // Early return to avoid further processing
+    }
+
+    setIsSubmitting(true);
+    
+    try {
+      await AppSignIn(form.email, form.password); // Call the correct SignIn function
+
+      // Set it to global state...
+
+      router.replace('/home');
+    } catch (error) {
+      Alert.alert('Error', error instanceof Error ? error.message : 'An unexpected error occurred');
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
 
   return (
     <SafeAreaView className="bg-primary h-full">
       <ScrollView>
         <View className="w-[92%] mx-auto justify-center h-[72vh] px-4 my-6">
           <Image source={Images.badge} resizeMode="contain" className="self-center h-[10vh] mb-10" />
-          <Text className='text-4xl font-semibold mt-1 text-center '>Welcome to Civilian Hotel</Text>
+          <Text className='text-4xl font-semibold mt-1 text-center'>Welcome to Civilian Hotel</Text>
           <Text className='text-lg font-pregular text-center mt-4'>Please sign in to access all that Civilian has to offer</Text>
           <FormFIeld 
             title='Email'

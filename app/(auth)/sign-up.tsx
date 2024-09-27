@@ -1,7 +1,7 @@
 import { View, ScrollView, Image, Text, Alert } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { useState } from "react";
-import { Link } from "expo-router";
+import { Link, router } from "expo-router";
 
 import Images from "@/constants/Images";
 import FormFIeld from "@/components/FormFIeld";
@@ -27,7 +27,9 @@ export default function SignUp() {
     try {
       const result = await createUser(form.email, form.password, form.username)
 
-      // Set it to global state
+      // Set it to global state...
+
+      router.replace('/home')
     } catch (error) {
       Alert.alert('Error', error instanceof Error ? error.message : 'An unexpected error occurred');
     } finally {
