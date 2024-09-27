@@ -87,7 +87,7 @@ export default function SignUp() {
               </Text>
               <Link
                 href="/sign-in"
-                className="text-lg font-psemibold text-accent-200"
+                className="text-lg font-psemibold text-accent"
               >
                 Sign In
               </Link>
