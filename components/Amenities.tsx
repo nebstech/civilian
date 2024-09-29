@@ -10,6 +10,7 @@ const Amenities = ({ posts }) => {
     renderItem={({ item }) => (
       <Text className="text-3xl">{item.id}</Text>
     )}
+    horizontal
     />
   )
 }
