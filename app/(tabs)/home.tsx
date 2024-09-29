@@ -1,38 +1,26 @@
-import { View, Text, StatusBar, Image, TouchableOpacity, Linking, FlatList } from "react-native";
+import {
+  View,
+  Text,
+  Image,
+  FlatList,
+} from "react-native";
 import { useColorScheme } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import Images from "@/constants/Images";
+import SearchInput from "@/components/SearchInput";
+import Amenities from "@/components/Amenities";
 
 export default function HomeScreen() {
   const colorScheme = useColorScheme();
 
-  const statusBarColor = colorScheme === "dark" ? "black" : "#1F1F1F"; // Lighter black for light mode
-  const backgroundColor = colorScheme === "dark" ? "black" : "white";
-
   return (
     <>
-    {/*
-      <View style={{ flex: 1, backgroundColor }}>
-        <View
-          style={{
-            height: StatusBar.currentHeight || 127, // Set a standard height
-            backgroundColor: statusBarColor,
-            zIndex: 1, // Set the zIndex here
-            position: "relative", // Make sure to set position if needed
-          }}
-        />
-        <StatusBar
-          barStyle={colorScheme === "dark" ? "light-content" : "dark-content"} // Adjust bar style based on mode
-          backgroundColor={statusBarColor}
-        />
-        */}
-        <SafeAreaView className="bg-primary">
-          <FlatList 
-          data={[{ id: 1 }, { id: 2 }, { id: 3 } ]}
+      <SafeAreaView className="bg-primary h-[21%] -mt-4">
+        <FlatList
+          data={[]}
           keyExtractor={(item) => item.$id}
-          renderItem={({ item }) => (
-            <Text className="text-3xl">{item.id}</Text>
-          )}
+          renderItem={({ item }) => (<View className=""></View>)}
+          contentContainerStyle={{ marginBottom: -20 }}
           ListHeaderComponent={() => (
             <View className="my-6 px-4 space-y-6">
               <View className="justify-between items-start flex-row mb-6">
@@ -45,34 +33,24 @@ export default function HomeScreen() {
                   </Text>
                 </View>
                 <View className="mt-1.5">
-                  <Image 
-                  source={Images.badge}
-                  className="w-9 h-10"
-                  resizeMode="contain"
+                  <Image
+                    source={Images.badge}
+                    className="w-9 h-10"
+                    resizeMode="contain"
                   />
                 </View>
               </View>
             </View>
           )}
-          />
-          {/*
-          <View className="w-[60vh] h-[60%] -mt-20 self-center items-center">
-            <Image source={Images.king} className="w-[50vh] h-[80%] z-10" />
+        />
+      </SafeAreaView>
 
-            <TouchableOpacity
-              className="bg-[#FF8C00] p-2 rounded-md mt-3 w-[20vh]"
-              onPress={() => {
-                Linking.openURL("https://www.civilianhotel.com");
-              }}
-            >
-              <Text className="text-black font-pbold text-lg text-center">
-                Book A Stay
-              </Text>
-            </TouchableOpacity>
-          </View>
-          */}
-        </SafeAreaView>
-      {/*</View>*/}
+      <View className="w-full flex-1 pt-5 pb-8 bg-white z-1">
+        <Text className="text-gray-100 text-lg font-pregular mb-3">
+          In the Hotel
+        </Text>
+        <Amenities posts={[{ id: 1 }, { id: 2 }, { id: 3 }]} />
+      </View>
     </>
   );
 }

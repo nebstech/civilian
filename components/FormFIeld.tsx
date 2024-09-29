@@ -1,8 +1,7 @@
 import { View, TextInput, TouchableOpacity, Image } from "react-native";
 import React, { useState } from "react";
-import { KeyboardTypeOptions, StyleSheet } from "react-native";
+import { KeyboardTypeOptions } from "react-native"; // Removed StyleSheet
 import { useColorScheme } from 'react-native'; // Import useColorScheme
-
 import icons from "../constants/Icons";
 
 interface FormFieldProps {
@@ -27,15 +26,15 @@ const FormField: React.FC<FormFieldProps> = ({
   const colorScheme = useColorScheme(); // Get the current color scheme
 
   // Define colors based on the current theme
-  const backgroundColor = colorScheme === 'dark' ? '#1E1E1E' : '#F3F4F6'; // Darker background for dark mode
-  const textColor = colorScheme === 'dark' ? 'white' : 'black'; // White text in dark mode
-  const borderColor = colorScheme === 'dark' ? '#444444' : '#D1D5DB'; // Dark border for dark mode
+  const backgroundColor = colorScheme === 'dark' ? 'bg-gray-900' : 'bg-gray-200'; // Tailwind background colors
+  const textColor = colorScheme === 'dark' ? 'text-white' : 'text-black'; // Tailwind text colors
+  const borderColor = colorScheme === 'dark' ? 'border-gray-600' : 'border-gray-300'; // Tailwind border colors
 
   return (
     <View className={`space-y-2 ${otherStyles}`}>
-      <View style={[styles.container, { backgroundColor, borderColor }]}>
+      <View className={`flex-row items-center border-2 rounded-lg w-full h-14 shadow-md ${backgroundColor} ${borderColor}`}>
         <TextInput 
-          style={[styles.input, { color: textColor }]} // Adjust text color
+          className={`flex-1 text-base ${textColor} px-4`} // Use Tailwind for input styles
           value={value}
           placeholder={placeholder || title} // Use placeholder prop if provided
           placeholderTextColor={colorScheme === 'dark' ? '#A1A1A1' : '#7B7B8B'} // Adjust placeholder color
@@ -57,30 +56,5 @@ const FormField: React.FC<FormFieldProps> = ({
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    borderWidth: 2,
-    width: '100%',
-    height: 56, // Adjusted height for consistency
-    paddingHorizontal: 16,
-    borderRadius: 12,
-    flexDirection: 'row',
-    alignItems: 'center',
-    shadowColor: 'rgba(0, 0, 0, 0.1)',
-    shadowOffset: {
-      width: 0,
-      height: 1,
-    },
-    shadowOpacity: 0.1,
-    shadowRadius: 1.5,
-    elevation: 2,
-  },
-  input: {
-    flex: 1,
-    fontSize: 16,
-    fontWeight: '600',
-  },
-});
 
 export default FormField;
