@@ -1,4 +1,4 @@
-import { View, Text, StatusBar, Image, TouchableOpacity, Linking } from "react-native";
+import { View, Text, StatusBar, Image, TouchableOpacity, Linking, FlatList } from "react-native";
 import { useColorScheme } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import Images from "@/constants/Images";
@@ -11,6 +11,7 @@ export default function HomeScreen() {
 
   return (
     <>
+    {/*
       <View style={{ flex: 1, backgroundColor }}>
         <View
           style={{
@@ -24,8 +25,37 @@ export default function HomeScreen() {
           barStyle={colorScheme === "dark" ? "light-content" : "dark-content"} // Adjust bar style based on mode
           backgroundColor={statusBarColor}
         />
-
-        <SafeAreaView style={{ flex: 1 }}>
+        */}
+        <SafeAreaView className="bg-primary">
+          <FlatList 
+          data={[{ id: 1 }, { id: 2 }, { id: 3 } ]}
+          keyExtractor={(item) => item.$id}
+          renderItem={({ item }) => (
+            <Text className="text-3xl">{item.id}</Text>
+          )}
+          ListHeaderComponent={() => (
+            <View className="my-6 px-4 space-y-6">
+              <View className="justify-between items-start flex-row mb-6">
+                <View>
+                  <Text className="font-pmedium text-sm text-gray-400">
+                    Welcome Back
+                  </Text>
+                  <Text className="text-2xl font-psemibold text-black">
+                    Neb
+                  </Text>
+                </View>
+                <View className="mt-1.5">
+                  <Image 
+                  source={Images.badge}
+                  className="w-9 h-10"
+                  resizeMode="contain"
+                  />
+                </View>
+              </View>
+            </View>
+          )}
+          />
+          {/*
           <View className="w-[60vh] h-[60%] -mt-20 self-center items-center">
             <Image source={Images.king} className="w-[50vh] h-[80%] z-10" />
 
@@ -40,8 +70,9 @@ export default function HomeScreen() {
               </Text>
             </TouchableOpacity>
           </View>
+          */}
         </SafeAreaView>
-      </View>
+      {/*</View>*/}
     </>
   );
 }
