@@ -10,5 +10,7 @@ import cover from "../assets/images/civilian_hotel_cover.jpeg"
 import lowResKing from "../assets/images/029_CozyQueenRoomRed-min.jpg"
 import logo2 from "../assets/images/IMG_5786-removebg-preview.png"
 import background from "../assets/images/phil-desforges-ow1mML1sOi0-unsplash.jpg"
+import ern from "../assets/images/Ernesto_Civilian_front.webp"
+import dark from "../assets/images/civilian entrance dark.png"
 
-export default { badge, entrance, habitacion, logo, exterior, king, queen, master, cover, lowResKing, logo2, background };
+export default { badge, entrance, habitacion, logo, exterior, king, queen, master, cover, lowResKing, logo2, background, ern, dark };

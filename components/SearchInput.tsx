@@ -24,17 +24,18 @@ const SearchInput: React.FC<SearchInputProps> = ({
   // Define colors based on the current theme
   const bgColor = colorScheme === "dark" ? "bg-gray-900" : "bg-gray-200"; // Background
   const textColor = colorScheme === "dark" ? "text-white" : "text-black"; // Text color
-  const borderColor = colorScheme === "dark" ? "border-gray-600" : "border-gray-300"; // Border color
+  const borderColor =
+    colorScheme === "dark" ? "border-gray-600" : "border-gray-300"; // Border color
 
   return (
     <View
-      className={`flex-row items-center border-2 rounded-lg w-full h-14 shadow-md ${bgColor} ${borderColor} ${otherStyles}`} // Add otherStyles
+      className={`flex-row items-center border-2 rounded-lg w-full h-14 shadow-md ${bgColor} ${borderColor}`}
     >
       <TextInput
-        className={`flex-1 text-base ${textColor} px-4`}
+        className={`flex-1 text-base ${textColor} px-4 bg-transparent`} // Add bg-transparent
         value={value}
-        placeholder={placeholder} // Use the placeholder prop
-        placeholderTextColor={colorScheme === "dark" ? "#A1A1A1" : "#7B7B8B"} // Adjust placeholder color
+        placeholder={placeholder}
+        placeholderTextColor={colorScheme === "dark" ? "#A1A1A1" : "#7B7B8B"}
         onChangeText={handleChangeText}
         keyboardType={keyboardType}
         {...props}
