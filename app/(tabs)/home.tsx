@@ -70,9 +70,9 @@ const Home: React.FC = () => {
 
               {/* Horizontal FlatList for Amenities */}
               {posts.length > 0 ? (
-                <View className="w-full flex-1 pt-5 pb-8">
+                <View className="w-full flex-1 pt-5 -mb-5">
                   <Text className="text-gray-500 text-lg font-pregular mb-4">
-                    In the Hotel &gt;
+                    Inside Civilian &gt;
                   </Text>
                   <FlatList
                     data={posts}
@@ -92,7 +92,7 @@ const Home: React.FC = () => {
               )}
 
               {/* Horizontal FlatList for Attractions */}
-              <View className="w-full flex-1 pt-5 pb-8">
+              <View className="w-full flex-1 pt-5">
                 <Text className="text-gray-500 text-lg font-pregular mb-4">
                   Local Attractions &gt;
                 </Text>
