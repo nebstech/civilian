@@ -15,6 +15,7 @@ export const config = {
   databaseId: "66f61bd400030d51b805",
   userCollectionId: "66f61c0d000e5325c3a7",
   sectionsId: "66fdb51c00043a8ec69e",
+  attractionsId: "66fe6253000bcea42936",
   storageId: "66f61ffc0035f5fce0f6",
 };
 
@@ -26,6 +27,7 @@ const {
   userCollectionId,
   sectionsId,
   storageId,
+  attractionsId,
 } = config;
 
 // Init your React Native SDK
@@ -124,6 +126,19 @@ export const getAllAmenities = async () => {
     const posts = await databases.listDocuments(
       databaseId,
       sectionsId
+    );
+
+    return posts.documents;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const getAllAttractions = async () => {
+  try {
+    const posts = await databases.listDocuments(
+      databaseId,
+      attractionsId,
     );
 
     return posts.documents;
