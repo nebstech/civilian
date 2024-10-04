@@ -13,7 +13,8 @@ import SearchInput from "@/components/SearchInput";
 import { getAllAmenities, getAllAttractions } from "@/lib/appwrite";
 import useAppwrite from "@/lib/useAppwrite";
 import AmenitiesCard from "@/components/AmenitiesCard";
-import AttractionsCard from "@/components/AttractionsCard"; // Import your AttractionsCard component
+import AttractionsCard from "@/components/AttractionsCard"; 
+import Information from "@/components/Information"; 
 
 const Home: React.FC = () => {
   const { data: posts, refetch } = useAppwrite(getAllAmenities);
@@ -61,9 +62,9 @@ const Home: React.FC = () => {
 
               <View className="w-[80%] self-center">
                 <SearchInput
-                  value="" // Placeholder value
+                  value="" 
                   handleChangeText={() => {}} // Placeholder function
-                  placeholder="Search..."
+                  placeholder="Search for an Event"
                   otherStyles="mb-4"
                 />
               </View>
@@ -107,6 +108,14 @@ const Home: React.FC = () => {
                   contentContainerStyle={{ paddingHorizontal: 10 }}
                 />
               </View>
+
+              <View className="w-full flex-1 pt-5">
+                <Text className="text-gray-700 text-lg font-pregular underline mb-4">
+                Information 
+                </Text>
+              </View>
+              <Information />
+
             </View>
           )}
           refreshControl={

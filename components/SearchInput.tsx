@@ -1,7 +1,8 @@
-import { View, TextInput, TouchableOpacity, Image } from "react-native";
-import React from "react";
-import { KeyboardTypeOptions, useColorScheme } from "react-native"; // Combine imports
-import icons from "../constants/Icons"; // Ensure the path is correct
+import { View, TextInput, TouchableOpacity, Image, Alert } from "react-native";
+import React, { useState } from "react";
+import { KeyboardTypeOptions } from "react-native"; 
+import icons from "../constants/Icons"; 
+import { router, usePathname } from "expo-router";
 
 interface SearchInputProps {
   value: string;
@@ -19,28 +20,39 @@ const SearchInput: React.FC<SearchInputProps> = ({
   keyboardType,
   ...props
 }) => {
-  const colorScheme = useColorScheme(); // Get the current color scheme
+  const pathname = usePathname()
+  const [query, setQuery] = useState('')
 
-  // Define colors based on the current theme
-  const bgColor = colorScheme === "dark" ? "bg-gray-900" : "bg-gray-200"; // Background
-  const textColor = colorScheme === "dark" ? "text-white" : "text-black"; // Text color
-  const borderColor =
-    colorScheme === "dark" ? "border-gray-600" : "border-gray-300"; // Border color
+
+
+  // Define colors based on the primary theme
+  const bgColor = "bg-primary-100"; 
+  const textColor = "text-black"; 
+  const borderColor = "border-primary-100"; 
 
   return (
     <View
       className={`flex-row items-center border-2 rounded-lg w-full h-14 shadow-md ${bgColor} ${borderColor}`}
     >
       <TextInput
-        className={`flex-1 text-base ${textColor} px-4 bg-transparent`} // Add bg-transparent
-        value={value}
+        className={`flex-1 text-base ${textColor} px-4 bg-transparent`} 
+        value={query}
         placeholder={placeholder}
-        placeholderTextColor={colorScheme === "dark" ? "#A1A1A1" : "#7B7B8B"}
-        onChangeText={handleChangeText}
+        placeholderTextColor="#000" 
+        onChangeText={(e) => setQuery(e)}
         keyboardType={keyboardType}
         {...props}
       />
-      <TouchableOpacity>
+      <TouchableOpacity
+        onPress={() => {
+          if(!query) {
+            return Alert.alert('Missing query', "Please input something to search results across database")
+          }
+
+          if(pathname.startsWith('/search')) router.setParams({ query })
+            else router.push(`/search/${query}`)
+        }}
+      >
         <Image source={icons.search} className="w-6 h-6" resizeMode="contain" />
       </TouchableOpacity>
     </View>

@@ -23,7 +23,6 @@ const AttractionsCard = ({ attraction: { name, description, image } }) => {
           {name}
         </Text>
       </TouchableOpacity>
-
       {/* Modal for displaying description */}
       <Modal
         animationType="fade"

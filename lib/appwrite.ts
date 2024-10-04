@@ -146,3 +146,21 @@ export const getAllAttractions = async () => {
     console.log(error);
   }
 };
+
+export const getAllEvents = async (query) => {
+  try {
+    const events = await databases.listDocuments(
+      databaseId,
+      sectionsId,
+      [Query.search("sectionName", query)]
+    );
+
+    if (!events) throw new Error("Something went wrong");
+
+    return events.documents;
+    
+  } catch (error) {
+    console.error("Error fetching events:", error);
+    
+  }
+};

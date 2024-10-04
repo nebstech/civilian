@@ -64,7 +64,7 @@ export default function App() {
               industry. Lorem Ipsum has been the industry's standard dummy.
             </Text>
             <CustomButton
-              title="Book Now"
+              title="Log In"
               handlePress={() => router.push("/sign-in")}
               containerStyles="w-[300px] mt-auto mb-8 self-center"
             />
