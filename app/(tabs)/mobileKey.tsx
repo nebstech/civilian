@@ -1,24 +1,12 @@
-import ParallaxScrollView from "@/components/ParallaxScrollView";
-import { ThemedText } from "@/components/ThemedText";
-import { ThemedView } from "@/components/ThemedView";
-import { StyleSheet } from "react-native";
+import { View, Text } from 'react-native'
+import React from 'react'
 
-export default function mobileKey() {
+const mobileKey = () => {
   return (
-    <ParallaxScrollView
-      headerBackgroundColor={{ light: "A1CEDC", dark: "1D3D47" }}
-    >
-      <ThemedView style={styles.titleContainer}>
-        <ThemedText type="title">Mobile Key</ThemedText>
-      </ThemedView>
-    </ParallaxScrollView>
-  );
+    <View>
+      <Text>mobileKey</Text>
+    </View>
+  )
 }
 
-const styles = StyleSheet.create({
-  titleContainer: {
-    flexDirection: "row",
-    alignItems: "center",
-    gap: 8,
-  },
-});
+export default mobileKey

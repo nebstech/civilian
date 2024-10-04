@@ -39,6 +39,15 @@ export default function TabLayout() {
         }}
       />
       <Tabs.Screen
+        name="reservation"
+        options={{
+          title: "Reservations",
+          tabBarIcon: ({ color }) => (
+            <TabBarIcon name="book" color={color} />
+          ),
+        }}
+      />
+      <Tabs.Screen
         name="mobileKey"
         options={{
           title: "Mobile Key",

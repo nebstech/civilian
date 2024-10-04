@@ -1,23 +1,49 @@
 import InfoBox from "@/components/InfoBox";
 import Icons from "@/constants/Icons";
 import { useGlobalContext } from "@/context/GlobalProvider";
-import { signOut } from "@/lib/appwrite";
-import React from "react";
-import { SafeAreaView, FlatList, Text, View, Image, TouchableOpacity } from "react-native";
-
+import { signOut, getUserReservations } from "@/lib/appwrite"; // Import the function
+import React, { useEffect, useState } from "react";
+import { SafeAreaView, FlatList, Text, View, Image, TouchableOpacity, Alert } from "react-native";
 import { router } from "expo-router";
 
 const Profile: React.FC = () => {
   const { user, setUser, setIsLoggedIn } = useGlobalContext();
+  const [reservations, setReservations] = useState([]);
 
   const logout = async () => {
     await signOut();
-    setUser(null)
-    setIsLoggedIn(false)
-
-    router.replace('/sign-in')
+    setUser(null);
+    setIsLoggedIn(false);
+    router.replace('/sign-in');
   };
 
+  useEffect(() => {
+    const fetchReservations = async () => {
+      try {
+        const userReservations = await getUserReservations(user.$id); // Get reservations for the current user
+        setReservations(userReservations);
+      } catch (error) {
+        Alert.alert("Error", error.message);
+      }
+    };
+
+    fetchReservations();
+  }, [user]);
+
+  const renderReservationItem = ({ item }) => (
+    <View className="mb-4 p-4 bg-primary-100 h-full -mt-10  flex flex-col rounded shadow">
+      <Text className="font-pbold mb-2">Reservation Number: </Text>
+      <Text className="font-psemibold mb-4">{item.$id}</Text>
+      <Text className="font-pbold mb-2">Check-in: </Text>
+      <Text className="font-psemibold mb-4">{item.checkInDate}</Text>
+      <Text className="font-pbold mb-2">Check-out: </Text>
+      <Text className="font-psemibold mb-4">{item.checkOutDate}</Text>
+      <Text className="font-pbold mb-2">Guests:</Text>
+      <Text className="font-psemibold mb-4"> {item.numberOfGuests}</Text>
+      <Text className="font-pbold mb-4">Room Type: </Text>
+      <Text className="font-psemibold mb-2">{item.roomType}</Text>
+    </View>
+  );
 
   return (
     <SafeAreaView className="bg-primary h-full flex-1">
@@ -44,6 +70,14 @@ const Profile: React.FC = () => {
               <Text className="mt-1 font-psemibold text-center text-lg text-black">{user.username}</Text> 
             </View>
           </View>
+        )}
+        ListFooterComponent={() => (
+          <FlatList
+            data={reservations}
+            keyExtractor={(item) => item.$id}
+            renderItem={renderReservationItem}
+            contentContainerStyle={{ paddingVertical: 16 }}
+          />
         )}
         contentContainerStyle={{ padding: 16 }}
       />

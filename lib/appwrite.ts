@@ -16,6 +16,7 @@ export const config = {
   userCollectionId: "66f61c0d000e5325c3a7",
   sectionsId: "66fdb51c00043a8ec69e",
   attractionsId: "66fe6253000bcea42936",
+  reservationsId: "66ffdc73001fe0f0882d",
   storageId: "66f61ffc0035f5fce0f6",
 };
 
@@ -28,6 +29,7 @@ const {
   sectionsId,
   storageId,
   attractionsId,
+  reservationsId,
 } = config;
 
 // Init your React Native SDK
@@ -123,10 +125,7 @@ export const getCurrentUser = async () => {
 
 export const getAllAmenities = async () => {
   try {
-    const posts = await databases.listDocuments(
-      databaseId,
-      sectionsId
-    );
+    const posts = await databases.listDocuments(databaseId, sectionsId);
 
     return posts.documents;
   } catch (error) {
@@ -136,10 +135,7 @@ export const getAllAmenities = async () => {
 
 export const getAllAttractions = async () => {
   try {
-    const posts = await databases.listDocuments(
-      databaseId,
-      attractionsId,
-    );
+    const posts = await databases.listDocuments(databaseId, attractionsId);
 
     return posts.documents;
   } catch (error) {
@@ -149,28 +145,68 @@ export const getAllAttractions = async () => {
 
 export const getAllEvents = async (query) => {
   try {
-    const events = await databases.listDocuments(
-      databaseId,
-      sectionsId,
-      [Query.search("sectionName", query)]
-    );
+    const events = await databases.listDocuments(databaseId, sectionsId, [
+      Query.search("sectionName", query),
+    ]);
 
     if (!events) throw new Error("Something went wrong");
 
     return events.documents;
-    
   } catch (error) {
     console.error("Error fetching events:", error);
-    
   }
 };
 
 export const signOut = async () => {
   try {
-    const session = await account.deleteSession('current');
+    const session = await account.deleteSession("current");
 
     return session;
   } catch (error) {
-    console.log(error)
+    console.log(error);
   }
-}
+};
+
+export const createReservation = async (
+  userId: string,
+  checkInDate: string,
+  checkOutDate: string,
+  numberOfGuests: number,
+  roomType: string,
+) => {
+  try {
+    const reservation = await databases.createDocument(
+      databaseId,
+      reservationsId,
+      ID.unique(), // This generates a new unique ID for the reservation
+      {
+        userId,
+        checkInDate,
+        checkOutDate,
+        numberOfGuests,
+        roomType,
+      }
+    );
+
+    return reservation; // This will contain the generated reservation ID
+  } catch (error) {
+    console.error("Error creating reservation:", error);
+    throw new Error("Failed to create reservation");
+  }
+};
+
+export const getUserReservations = async (userId) => {
+  try {
+    const userReservations = await databases.listDocuments(
+      config.databaseId,
+      config.reservationsId,
+      [Query.equal("userId", userId)] // Query to get reservations for the current user
+    );
+
+    return userReservations.documents;
+  } catch (error) {
+    console.error("Error fetching user reservations:", error);
+    throw new Error("Failed to fetch reservations: " + error.message);
+  }
+};
+
