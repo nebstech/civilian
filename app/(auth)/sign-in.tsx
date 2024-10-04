@@ -7,9 +7,12 @@ import { useColorScheme } from "react-native";
 import Images from "@/constants/Images";
 import FormFIeld from "@/components/FormFIeld";
 import CustomButton from "@/components/CustomButton";
-import { SignIn as AppSignIn } from "@/lib/appwrite";
+import { SignIn as AppSignIn, getCurrentUser } from "@/lib/appwrite";
+import { useGlobalContext } from "@/context/GlobalProvider";
 
 export default function SignIn() {
+  const { setUser, setIsLoggedIn } = useGlobalContext();
+
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [form, setForm] = useState({
     email: "",
@@ -28,6 +31,10 @@ export default function SignIn() {
 
     try {
       await AppSignIn(form.email, form.password);
+      const result = await getCurrentUser();
+      setUser(result);
+      setIsLoggedIn(true);
+      
       router.replace("/home");
     } catch (error) {
       Alert.alert(

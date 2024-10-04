@@ -8,8 +8,10 @@ import Images from "@/constants/Images";
 import FormFIeld from "@/components/FormFIeld";
 import CustomButton from "@/components/CustomButton";
 import { createUser } from "@/lib/appwrite";
+import { useGlobalContext } from "@/context/GlobalProvider";
 
 export default function SignUp() {
+  const { setUser, setIsLoggedIn } = useGlobalContext();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [form, setForm] = useState({
     username: "",
@@ -27,8 +29,10 @@ export default function SignUp() {
     setIsSubmitting(true);
 
     try {
-      await createUser(form.email, form.password, form.username);
-      // Set it to global state...
+      const result = await createUser(form.email, form.password, form.username);
+      
+      setUser(result);
+      setIsLoggedIn(true);
 
       router.replace("/home");
     } catch (error) {

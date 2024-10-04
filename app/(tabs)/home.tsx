@@ -15,8 +15,10 @@ import useAppwrite from "@/lib/useAppwrite";
 import AmenitiesCard from "@/components/AmenitiesCard";
 import AttractionsCard from "@/components/AttractionsCard"; 
 import Information from "@/components/Information"; 
+import { useGlobalContext } from "@/context/GlobalProvider";
 
 const Home: React.FC = () => {
+  const { user, setUser, setIsLoggedIn } = useGlobalContext();
   const { data: posts, refetch } = useAppwrite(getAllAmenities);
   const { data: attractions } = useAppwrite(getAllAttractions);
 
@@ -46,9 +48,11 @@ const Home: React.FC = () => {
               <View className="flex justify-between items-start flex-row mb-6">
                 <View>
                   <Text className="font-pmedium text-sm text-gray-400">
-                    Welcome Back
+                    Welcome back,
                   </Text>
-                  <Text className="text-2xl font-psemibold text-black">Neb</Text>
+                  <Text className="text-2xl font-psemibold text-black">
+                    {user?.username}
+                  </Text>
                 </View>
 
                 <View className="mt-1.5">

@@ -164,3 +164,13 @@ export const getAllEvents = async (query) => {
     
   }
 };
+
+export const signOut = async () => {
+  try {
+    const session = await account.deleteSession('current');
+
+    return session;
+  } catch (error) {
+    console.log(error)
+  }
+}
