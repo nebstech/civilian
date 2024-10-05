@@ -1,7 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 import {
-  Alert,
   FlatList,
   Image,
   RefreshControl,
@@ -47,17 +46,17 @@ const Home: React.FC = () => {
             <View className="flex my-6 px-4 space-y-6">
               <View className="flex justify-between items-start flex-row mb-6">
                 <View>
-                  <Text className="font-pmedium text-sm text-gray-400">
+                  <Text className="font-pmedium text-sm text-gray-100">
                     Welcome back,
                   </Text>
-                  <Text className="text-2xl font-psemibold text-black">
+                  <Text className="text-2xl font-psemibold text-white">
                     {user?.username}
                   </Text>
                 </View>
 
                 <View className="mt-1.5">
                   <Image
-                    source={Images.badge}
+                    source={Images.logo2}
                     className="w-9 h-10"
                     resizeMode="contain"
                   />
@@ -114,7 +113,7 @@ const Home: React.FC = () => {
               </View>
 
               <View className="w-full flex-1 pt-5">
-                <Text className="text-gray-700 text-lg font-pregular underline mb-4">
+                <Text className="text-gray-400 text-lg font-pregular underline mb-6 mt-10">
                 Information 
                 </Text>
               </View>

@@ -18,11 +18,11 @@ const Information = () => {
   ];
 
   return (
-    <View className=''>
+    <View className='mb-[40%]'>
       {items.map((item, index) => (
         <TouchableOpacity key={index} onPress={() => handlePress(item)} className='flex flex-row justify-between py-4'>
-          <Text className='font-plight text-lg'>{item}</Text>
-          <Text className='font-pregular'>&gt;</Text>
+          <Text className='font-plight text-lg text-white'>{item}</Text>
+          <Text className='font-pregular text-white'>&gt;</Text>
         </TouchableOpacity>
       ))}
     </View>

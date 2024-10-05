@@ -36,16 +36,19 @@ const MobileKeyActivator = () => {
 
   return (
     <SafeAreaView className="bg-primary h-full p-4">
-      <Text className="font-psemibold text-lg mb-4">
-        Seamlessly check in and create a mobile key for your stay!
+      <Text className='text-white text-2xl mt-10 mb-4 self-center font-pbold'>Mobile Key</Text>
+      <View className='mb-4 mt-12 mx-4 justify-center'>
+      <Text className="font-psemibold self-center text-lg text-gray-100">
+        Check in and create your mobile key
       </Text>
       <TextInput
-        className="text-lg bg-blue-50 text-black border border-gray-300 rounded p-2 mb-5"
+        className="text-lg bg-black-100 border border-gray-300 p-2 mt-4 h-14 rounded"
         placeholder="Enter Reservation Number"
         placeholderTextColor="#A0AEC0"
         value={reservationNumber}
         onChangeText={setReservationNumber}
       />
+      </View>
       <CustomButton 
       title="Create Key"
       handlePress={handleSubmit} 

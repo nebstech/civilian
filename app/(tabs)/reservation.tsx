@@ -1,4 +1,4 @@
-import { View, Text, SafeAreaView, TextInput, Button, Alert, TouchableOpacity } from 'react-native';
+import { View, Text, SafeAreaView, TextInput, Alert } from 'react-native';
 import React, { useState } from 'react';
 import { createReservation } from '@/lib/appwrite'; 
 import { useGlobalContext } from '@/context/GlobalProvider';
@@ -33,12 +33,12 @@ const CreateReservation = () => {
 
   return (
     <SafeAreaView className='bg-primary h-full p-4'>
-      <Text className='text-2xl font-pbold mt-4 text-black text-center mb-4'>Create Reservation</Text>
+      <Text className='text-2xl font-pbold mt-6 text-center mb-4 text-white'>Create Reservation</Text>
 
       <View className='mb-4 mt-12 mx-4'>
-        <Text className='font-psemibold text-lg text-black'>Check-In Date:</Text>
+        <Text className='font-psemibold text-lg text-gray-100'>Check-In Date:</Text>
         <TextInput
-          className='bg-primary-100 border border-gray-300 p-2 mt-4 h-14 rounded'
+          className='bg-black-100 border border-gray-300 p-2 mt-4 h-14 rounded'
           placeholder='YYYY-MM-DD'
           value={checkInDate}
           onChangeText={setCheckInDate}
@@ -46,9 +46,9 @@ const CreateReservation = () => {
       </View>
 
       <View className='mb-4 mx-4'>
-        <Text className='font-psemibold text-lg text-black'>Check-Out Date:</Text>
+        <Text className='font-psemibold text-lg text-gray-100'>Check-Out Date:</Text>
         <TextInput
-          className='bg-primary-100 border border-gray-300 p-2 mt-4 h-14 rounded'
+          className='bg-black-100 border border-gray-300 p-2 mt-4 h-14 rounded'
           placeholder='YYYY-MM-DD'
           value={checkOutDate}
           onChangeText={setCheckOutDate}
@@ -56,9 +56,9 @@ const CreateReservation = () => {
       </View>
 
       <View className='mb-4 mx-4'>
-        <Text className='text-lg font-psemibold text-black'>Number of Guests:</Text>
+        <Text className='text-lg font-psemibold text-gray-100'>Number of Guests:</Text>
         <TextInput
-          className='bg-primary-100 border border-gray-300 p-2 mt-4 h-14 rounded'
+          className='bg-black-100 border border-gray-300 p-2 mt-4 h-14 rounded'
           placeholder='Number of Guests'
           value={numberOfGuests}
           keyboardType='numeric'
@@ -67,9 +67,9 @@ const CreateReservation = () => {
       </View>
 
       <View className='mb-4 mx-4'>
-        <Text className='text-lg font-psemibold text-black'>Room Type:</Text>
+        <Text className='text-lg font-psemibold text-gray-100'>Room Type:</Text>
         <TextInput
-          className='bg-primary-100 border border-gray-300 p-2 mt-4 h-14 rounded'
+          className='bg-black-100 border border-gray-300 p-2 mt-4 h-14 rounded'
           placeholder='e.g., Deluxe, Standard'
           value={roomType}
           onChangeText={setRoomType}

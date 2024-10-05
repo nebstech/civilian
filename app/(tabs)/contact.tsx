@@ -6,32 +6,32 @@ const Contact = () => {
   return (
     <SafeAreaView className="flex-1 bg-primary">
       <View className="p-4">
-        <Text className="text-2xl font-pbold text-black text-center mb-4 mt-4">
+        <Text className="text-2xl self-center font-pbold text-white text-center mb-4 mt-4">
           Contact Us
         </Text>
         <View>
-          <Text className="text-center font-plight -mt-3">
+          <Text className="self-center text-gray-100 font-plight -mt-3 mb-8">
             Need help with anything?
           </Text>
         </View>
 
         <View className="mt-6">
-          <Text className="text-xl font-psemibold text-black">Address:</Text>
-          <Text className="text-lg font-pregular text-gray-700">
+          <Text className="text-xl font-psemibold text-gray-100">Address:</Text>
+          <Text className="text-lg font-pregular text-zinc-200">
             123 Random St, New York, NY 10001
           </Text>
         </View>
 
         <View className="mt-4">
-          <Text className="text-xl font-psemibold text-black">Email:</Text>
-          <Text className="text-lg font-pregular text-gray-700">
+          <Text className="text-xl font-psemibold text-gray-100">Email:</Text>
+          <Text className="text-lg font-pregular text-zinc-200">
             info@civilian.com
           </Text>
         </View>
 
         <View className="mt-4">
-          <Text className="text-xl font-psemibold text-black">Phone:</Text>
-          <Text className="text-lg font-pregular text-gray-700">
+          <Text className="text-xl font-psemibold text-gray-100">Phone:</Text>
+          <Text className="text-lg font-pregular text-zinc-200">
             (123) 456-7890
           </Text>
         </View>

@@ -9,7 +9,7 @@ const AttractionsCard = ({ attraction: { name, description, image } }) => {
       <TouchableOpacity 
         activeOpacity={0.8}
         className="w-60 h-60 relative justify-center items-center overflow-hidden" 
-        onPress={() => setModalVisible(true)} // Show modal on image click
+        onPress={() => setModalVisible(true)} 
       >
         <Image
           source={{ uri: image }}
@@ -31,9 +31,9 @@ const AttractionsCard = ({ attraction: { name, description, image } }) => {
         onRequestClose={() => setModalVisible(false)} 
       >
         <View className="flex-1 justify-center items-center bg-transparent bg-opacity-70">
-          <View className="w-80 p-4 bg-zinc-100 rounded-lg">
-            <Text className="text-2xl text-black font-psemibold">{name}</Text>
-            <Text className="mt-2 font-pregular text-gray-600">{description}</Text>
+          <View className="w-80 p-4 bg-gray-100 rounded-lg">
+            <Text className="text-2xl text-black-100 font-psemibold">{name}</Text>
+            <Text className="mt-2 font-pregular text-black">{description}</Text>
             <Pressable
               style={{ marginTop: 20, alignSelf: 'flex-end' }}
               onPress={() => setModalVisible(false)} 
