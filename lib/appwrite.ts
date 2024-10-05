@@ -206,7 +206,7 @@ export const getUserReservations = async (userId) => {
     return userReservations.documents;
   } catch (error) {
     console.error("Error fetching user reservations:", error);
-    throw new Error("Failed to fetch reservations: " + error.message);
+    
   }
 };
 

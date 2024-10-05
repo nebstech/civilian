@@ -1,11 +1,9 @@
 import Icons from "@/constants/Icons";
 import { useGlobalContext } from "@/context/GlobalProvider";
-import { signOut, getUserReservations } from "@/lib/appwrite"; 
+import { signOut, getUserReservations } from "@/lib/appwrite"; // Import the function
 import React, { useEffect, useState } from "react";
 import { SafeAreaView, FlatList, Text, View, Image, TouchableOpacity, Alert } from "react-native";
 import { router } from "expo-router";
-import Images from "@/constants/Images";
-
 
 const Profile: React.FC = () => {
   const { user, setUser, setIsLoggedIn } = useGlobalContext();
@@ -24,7 +22,7 @@ const Profile: React.FC = () => {
         const userReservations = await getUserReservations(user.$id); // Get reservations for the current user
         setReservations(userReservations);
       } catch (error) {
-        console.log(error);
+        Alert.alert("Error", error.message);
       }
     };
 
@@ -43,11 +41,6 @@ const Profile: React.FC = () => {
       <Text className="font-psemibold mb-4"> {item.numberOfGuests}</Text>
       <Text className="font-pbold mb-4">Room Type: </Text>
       <Text className="font-psemibold mb-2">{item.roomType}</Text>
-      <Image 
-        source={Images.king}
-        className="w-64 h-40 rounded-lg"
-        resizeMode="cover"
-      />
     </View>
   );
 

@@ -1,7 +1,8 @@
-import { View, Text, SafeAreaView, TextInput, Button, Alert } from 'react-native';
+import { View, Text, SafeAreaView, TextInput, Button, Alert, TouchableOpacity } from 'react-native';
 import React, { useState } from 'react';
 import { createReservation } from '@/lib/appwrite'; 
 import { useGlobalContext } from '@/context/GlobalProvider';
+import CustomButton from '@/components/CustomButton';
 
 const CreateReservation = () => {
   const { user } = useGlobalContext();
@@ -32,32 +33,32 @@ const CreateReservation = () => {
 
   return (
     <SafeAreaView className='bg-primary h-full p-4'>
-      <Text className='text-2xl font-bold text-black text-center mb-4'>Create Reservation</Text>
+      <Text className='text-2xl font-pbold mt-4 text-black text-center mb-4'>Create Reservation</Text>
 
-      <View className='mb-4'>
-        <Text className='text-lg text-black'>Check-In Date:</Text>
+      <View className='mb-4 mt-12 mx-4'>
+        <Text className='font-psemibold text-lg text-black'>Check-In Date:</Text>
         <TextInput
-          className='border border-gray-300 p-2 rounded'
+          className='bg-primary-100 border border-gray-300 p-2 mt-4 h-14 rounded'
           placeholder='YYYY-MM-DD'
           value={checkInDate}
           onChangeText={setCheckInDate}
         />
       </View>
 
-      <View className='mb-4'>
-        <Text className='text-lg text-black'>Check-Out Date:</Text>
+      <View className='mb-4 mx-4'>
+        <Text className='font-psemibold text-lg text-black'>Check-Out Date:</Text>
         <TextInput
-          className='border border-gray-300 p-2 rounded'
+          className='bg-primary-100 border border-gray-300 p-2 mt-4 h-14 rounded'
           placeholder='YYYY-MM-DD'
           value={checkOutDate}
           onChangeText={setCheckOutDate}
         />
       </View>
 
-      <View className='mb-4'>
-        <Text className='text-lg text-black'>Number of Guests:</Text>
+      <View className='mb-4 mx-4'>
+        <Text className='text-lg font-psemibold text-black'>Number of Guests:</Text>
         <TextInput
-          className='border border-gray-300 p-2 rounded'
+          className='bg-primary-100 border border-gray-300 p-2 mt-4 h-14 rounded'
           placeholder='Number of Guests'
           value={numberOfGuests}
           keyboardType='numeric'
@@ -65,17 +66,21 @@ const CreateReservation = () => {
         />
       </View>
 
-      <View className='mb-4'>
-        <Text className='text-lg text-black'>Room Type:</Text>
+      <View className='mb-4 mx-4'>
+        <Text className='text-lg font-psemibold text-black'>Room Type:</Text>
         <TextInput
-          className='border border-gray-300 p-2 rounded'
+          className='bg-primary-100 border border-gray-300 p-2 mt-4 h-14 rounded'
           placeholder='e.g., Deluxe, Standard'
           value={roomType}
           onChangeText={setRoomType}
         />
       </View>
 
-      <Button title="Create Reservation" onPress={handleSubmit} />
+      <CustomButton 
+      title='Create Reservation'
+      handlePress={handleSubmit}
+      containerStyles="w-[300px] mt-auto mb-10 self-center"
+      />
     </SafeAreaView>
   );
 };
