@@ -13,8 +13,8 @@
       "backgroundColor": "#ffffff"
     },
     "ios": {
-      "supportsTablet": true,
-      "package": "com.jsm.civilianhotel"
+      "supportsTablet": true
+      
     },
     "android": {
       "package": "com.jsm.civilianhotel",

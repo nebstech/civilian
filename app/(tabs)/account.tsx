@@ -1,4 +1,3 @@
-import InfoBox from "@/components/InfoBox";
 import Icons from "@/constants/Icons";
 import { useGlobalContext } from "@/context/GlobalProvider";
 import { signOut, getUserReservations } from "@/lib/appwrite"; // Import the function
